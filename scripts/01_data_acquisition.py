@@ -28,10 +28,7 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 RAW_DIR = os.path.join(BASE_DIR, "..", "data", "01_raw", today)
 
 # DOWNLOAD / API FUNCTIONS
-def nhtsa_download(dir):
-    # Uses helper Function & Fallback API
-
-    # Skip if already downloaded    
+def nhtsa_download(dir): 
     if os.path.exists(os.path.join(dir, 'FLAT_CMPL.txt')):
         logger.info('NHTSA data already exists, skipping downloading')
         return True
@@ -45,9 +42,6 @@ def nhtsa_download(dir):
         return False  
 
 def afdc_download(dir):
-    # Fallback: form POST if API fails
-    
-    # Skip if already downloaded
     if os.path.exists(os.path.join(dir, 'afdc_stations.json')):
         logger.info('AFDC data already exists, skipping downloading')
         return True
@@ -68,9 +62,6 @@ def afdc_download(dir):
         return False
     
 def epa_download(dir):
-    # Uses helper Function for downloading & Fallback individual year downloads if zip fails
-    
-    # Skip if already downloaded
     if os.path.exists(os.path.join(dir, 'vehicles.csv')):
         logger.info('EPA data already exists, skipping downloading')
         return True
@@ -85,7 +76,6 @@ def epa_download(dir):
 
 # MAIN FUNCTION
 def main():
-    # Calls each function downloads & logs info verbose
     results = {}
     results["NHTSA"] = nhtsa_download(RAW_DIR)
     results["AFDC"] = afdc_download(RAW_DIR)

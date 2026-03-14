@@ -78,7 +78,6 @@ def nhtsa_process(raw_dir, processed_dir):
         df = pd.read_csv(os.path.join(raw_dir, 'FLAT_CMPL.txt'), sep='\t', header=None, names=nhtsa_cols, on_bad_lines='skip', encoding='latin-1', low_memory=False)
         logger.info(f'NHTSA Dataset loaded: {len(df)} rows')
         
-        # Filter Vehicles only, keep only important columns & clean bad values
         df = df[df['PROD_TYPE'] == 'V']
         df = df[nhtsa_keep]
         df = df[df['YEARTXT'] != 9999]
