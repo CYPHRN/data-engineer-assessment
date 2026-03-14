@@ -81,7 +81,7 @@ def main():
     results["AFDC"] = afdc_download(RAW_DIR)
     results["EPA"] = epa_download(RAW_DIR)
     
-    logger.info("Data Acquistion Complete!")
+    logger.info("Data Acquisition Complete")
     for source, success in results.items():
         status = "OK" if success else "FAILED"
         logger.info(f'{source}:{status}')

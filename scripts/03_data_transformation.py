@@ -21,7 +21,7 @@ def complaints_by_cylinders(processed_dir, transformed_dir):
     try:
         logger.info('Processing NHTSA Complaints')
         df = pd.read_csv(os.path.join(processed_dir, 'nhtsa_processed.csv'), low_memory=False)
-        logger.info(f'NHTSA Proccessed Dataset loaded {len(df)} rows')
+        logger.info(f'NHTSA Processed Dataset loaded {len(df)} rows')
 
         df = df[df['NUM_CYLS'] <= 16]
         df = df.dropna(subset=['NUM_CYLS'])
@@ -40,7 +40,7 @@ def vehicle_type_shift(processed_dir, transformed_dir):
     try:
         logger.info('Processing EPA Vehicle Type Shift')
         df = pd.read_csv(os.path.join(processed_dir, 'epa_processed.csv'), low_memory=False)
-        logger.info(f'EPA Proccessed Dataset loaded {len(df)} rows')
+        logger.info(f'EPA Processed Dataset loaded {len(df)} rows')
 
         df = df.dropna(subset=['year', 'atvType'])
         result = df.groupby(['year', 'atvType']).size().reset_index(name='vehicle_count')
@@ -57,7 +57,7 @@ def fuel_station_growth(processed_dir, transformed_dir):
     try:
         logger.info('Processing AFDC Fuel Station growth')
         df = pd.read_csv(os.path.join(processed_dir, 'afdc_processed.csv'), low_memory=False)
-        logger.info(f'AFDC Proccessed Dataset loaded {len(df)} rows')
+        logger.info(f'AFDC Processed Dataset loaded {len(df)} rows')
 
         df['open_date'] = pd.to_datetime(df['open_date'], errors='coerce')
         df['open_year'] = df['open_date'].dt.year
@@ -76,7 +76,7 @@ def complaints_based_on_fuel(processed_dir, transformed_dir):
     try:
         logger.info('Processing NHTSA Complaints / Fuel Type')
         df = pd.read_csv(os.path.join(processed_dir, 'nhtsa_processed.csv'), low_memory=False)
-        logger.info(f'NHTSA Proccessed Dataset loaded {len(df)} rows')
+        logger.info(f'NHTSA Processed Dataset loaded {len(df)} rows')
 
         df = df.dropna(subset=['FUEL_TYPE'])
         result = df.groupby(['FUEL_TYPE']).size().reset_index(name='fuel_type_complaints')
