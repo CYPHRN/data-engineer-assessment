@@ -48,7 +48,7 @@ Downloads three public datasets, cleans them, transforms them into analytical ou
 ### Setup
 
 ```bash
-git clone https://github.com/yourusername/data-engineer-assessment.git
+git clone https://github.com/CYPHRN/data-engineer-assessment.git
 cd data-engineer-assessment
 
 python -m venv venv
